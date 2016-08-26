@@ -7,7 +7,7 @@ Because fun ?
 
 ## Ok.. I guess, but how do I write it ?
 
-This is a pretty young language in it's earlier version so the syntax might change, but for now, here's the perl keywords and their
+This is a pretty young language in it's earlier version so the syntax will change, but for now, here's the perl keywords and their
 emojis :
 
 - ✅ => ;
