@@ -21,5 +21,6 @@ emojis :
 - ✴ => "
 - ⌚ => time
 - 📠 => print
+- 💩 => use Data::Dumper; print Dumper #Will find a better solution to include. Maybe.
 
 And then run '/bin/emoji-perl yourcode.emoji' and get ready to be blown away

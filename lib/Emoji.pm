@@ -21,6 +21,7 @@ sub get_grammar {
 	"\xF0\x9F\x93\xA0" => "print",
 	"\xE2\x9C\xB4" => "\"",
 	"\xF0\x9F\x94\xB9" => ".",
+	"\xF0\x9F\x92\xA9" => "use Data::Dumper; print Dumper",
 	);
 }
 
