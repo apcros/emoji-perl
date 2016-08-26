@@ -1,32 +1,12 @@
 #!/usr/bin/perl
-use File::Slurp;
-use utf8;
 use strict;
 use warnings;
+use lib 'lib/';
+use Emoji;
+
 
 #EmojiPerl v0.01
 my $emoji_file = $ARGV[0];
-my $emoji_source = File::Slurp::read_file($emoji_file);
-my %emoji_grammar = (
-	"\xE2\x8C\x9A" => "time",
-	"\xE2\x9C\x85" => ";", #✅
-	"\xE2\x9A\x93" => "sub",
-	"\xE2\x96\xB6" => "{",
-	"\xE2\x97\x80" => "}",
-	"\xF0\x9F\x93\x8C" => "my",
-	"\xF0\x9F\x92\xB2" => "\$",
-	"\xE2\x8F\xAA" => "=",
-	"\xF0\x9F\x94\xBC" => "shift",
-	"\xF0\x9F\x93\xA0" => "print",
-	"\xE2\x9C\xB4" => "\"",
-	"\xF0\x9F\x94\xB9" => ".",
-);
 
-foreach my $emoji (keys %emoji_grammar) {
-	$emoji_source =~ s/$emoji/$emoji_grammar{$emoji}/g;
-}
-
-File::Slurp::write_file($emoji_file.".bytecode",$emoji_source);
-
-print `perl $emoji_file.bytecode`;
+print Emoji::do_magic($emoji_file);
 
