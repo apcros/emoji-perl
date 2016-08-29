@@ -1,27 +1,29 @@
 package Emoji;
 
-use File::Slurp;
 use utf8;
 use strict;
 use warnings;
+
+# Core since 5.18
+use File::Temp qw/ tempfile /;
 
 # Separate sub just in case we decide to do some crazy shit
 # Like fetching from a web service
 sub get_grammar {
 	return (
-	"\xE2\x8C\x9A" => "time",
-	"\xE2\x9C\x85" => ";", #✅
-	"\xE2\x9A\x93" => "sub",
-	"\xE2\x96\xB6" => "{",
-	"\xE2\x97\x80" => "}",
-	"\xF0\x9F\x93\x8C" => "my",
-	"\xF0\x9F\x92\xB2" => "\$",
-	"\xE2\x8F\xAA" => "=",
-	"\xF0\x9F\x94\xBC" => "shift",
-	"\xF0\x9F\x93\xA0" => "print",
-	"\xE2\x9C\xB4" => "\"",
-	"\xF0\x9F\x94\xB9" => ".",
-	"\xF0\x9F\x92\xA9" => "use Data::Dumper; print Dumper",
+	"⌚" => "time",
+	"✅" => ";", #✅
+	"⚓" => "sub",
+	"▶" => "{",
+	"◀" => "}",
+	"📌" => "my",
+	"💲" => "\$",
+	"⏪" => "=",
+	"🔼" => "shift",
+	"📠" => "print",
+	"✴" => "\"",
+	"🔹" => ".",
+	"💩" => "use Data::Dumper; print Dumper",
 	);
 }
 
@@ -36,13 +38,25 @@ sub emoji_to_perl {
 }
 
 sub do_magic {
-	my $file_path = shift;
-	my $emoji_source = File::Slurp::read_file($file_path);
+    my $emoji_file = shift;
 
-	File::Slurp::write_file($file_path.".bytecode",emoji_to_perl($emoji_source));
-	my $executed_emoji =  `perl $file_path.bytecode`;
-	unlink "$file_path.bytecode";
-	return $executed_emoji;
+    my ($fh, $perl_file) = tempfile();
+    binmode($fh, ":utf8");
+
+    my $emoji_code = slurp($emoji_file);
+    my $perl_code = emoji_to_perl($emoji_code);
+    print $fh $perl_code;
+
+    return `perl $perl_file`;
+}
+
+sub slurp {
+    my $file = shift;
+    open my $fh, '<:encoding(UTF-8)', $file or die;
+    local $/ = undef;
+    my $cont = <$fh>;
+    close $fh;
+    return $cont;
 }
 
 1;
