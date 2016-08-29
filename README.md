@@ -3,7 +3,11 @@ A Perl interpreter for Emoji source code. (Yes. You read right)
 
 ## Hello World
 
-    📠  ✴Hello World✴ ✅
+    📠  ✴Hello, World!✴ ✅
+
+is equivalent to:
+
+    print "Hello, World!";
 
 ## Why the f**k ?
 
