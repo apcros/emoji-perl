@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/apcros/emoji-perl.svg?branch=master)](https://travis-ci.org/apcros/emoji-perl)
 # emoji-perl
 A Perl interpreter for Emoji source code. (Yes. You read right)
 
