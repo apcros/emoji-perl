@@ -1,7 +1,11 @@
 # emoji-perl
 A Perl interpreter for Emoji source code. (Yes. You read right)
 
-## Why the f**k ? 
+## Hello World
+
+    📠  ✴Hello World✴ ✅
+
+## Why the f**k ?
 
 Because fun ?
 
@@ -21,6 +25,6 @@ emojis :
 - ✴ => "
 - ⌚ => time
 - 📠 => print
-- 💩 => use Data::Dumper; print Dumper #Will find a better solution to include. Maybe.
+- 💩 => print Dumper
 
-And then run '/bin/emoji-perl yourcode.emoji' and get ready to be blown away
+And then run `bin/emoji-perl yourcode.emoji` and get ready to be blown away
